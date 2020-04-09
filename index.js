@@ -17,16 +17,22 @@ inquirer
                 // console.log(response.data.items[0]);
                 const data = response.data.items[0];
                 const { avatar_url } = data;
-                console.log(avatar_url);
+                // console.log(avatar_url);
+
+                const readMeLayout = `Username: ${username}
+                ![User Profile Image](${avatar_url})`;
                 
-                fs.writeFile("genREADME.md", avatar_url, function(err) {
+                fs.writeFile("genREADME.md", readMeLayout, function(err) {
                     if (err) {
                         return console.log(err);
                     }
 
-                    console.log(`Saved ${avatar_url} to genREADME`);
+                    console.log(`README generated.`);
                 })
             
+            })
+            .catch(function(err) {
+                console.log(err);            
             });
 
     });
