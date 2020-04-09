@@ -14,7 +14,19 @@ inquirer
         axios
             .get(queryUrl)
             .then(function(response) {
-                console.log(response.data);
+                // console.log(response.data.items[0]);
+                const data = response.data.items[0];
+                const { avatar_url } = data;
+                console.log(avatar_url);
+                
+                fs.writeFile("genREADME.md", avatar_url, function(err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+
+                    console.log(`Saved ${avatar_url} to genREADME`);
+                })
+            
             });
 
     });
