@@ -13,11 +13,11 @@ promptUser()
         async function (response) {
             try {
                 // and get each separate response
-                const { fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests } = response;
+                const { fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, badge } = response;
                 // Call the getGitHubData function to get the avatar url
                 const avatar = await getGitHubData(username);
                 // Generate the readme using all the response data
-                return generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar);
+                return generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar, badge);
             // If there's an error, log error
             } catch (err) {
                 console.log(err);
@@ -102,6 +102,11 @@ function promptUser() {
             type: "input",
             message: "Write tests for your application (separate using a comma):",
             name: "tests"
+        },
+        {
+            type: "input",
+            message: "Add a url for a badge for this application:",
+            name: "badge"
         }
     ])
 }
@@ -119,9 +124,9 @@ function getGitHubData(username) {
 }
 
 // Create function to generate the template literate using data from the prompt and GitHub call
-function generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar) {
+function generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar, badge) {
     return `
-# ${title}   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+# ${title}   [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md) ![User Badge](${badge})
 > ${shortDescription}  
 
 

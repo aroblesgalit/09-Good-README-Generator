@@ -1,11 +1,11 @@
 
-# Good README Generator   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
-> Command-line application that dynamically generates a README  
+# Good README Generator   [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md) ![User Badge](https://img.shields.io/badge/README-Generator-brightgreen) 
+> Command-line application for dynamically generating a README.md  
 
 
 ## Description
 
-This was a homework assignment where we created a command-line application that prompts users and uses that response to dynamically create a README.
+This was a homework assignment where we created a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command - node index.js
 
 
 ![Screenshot](./images/readme-generator-screenshot.JPG)
@@ -33,12 +33,12 @@ This was a homework assignment where we created a command-line application that 
 
 ## Credits
 
-    Credit one, Credit two, Credit three
+    Axiom, Inquirer, Shields.io
 
 
 ## License
 
-    MIT License
+    ISC License
 
 
 ## Contributing
@@ -50,7 +50,7 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 ## Tests
 
-    Test one, Test two, Test three
+    Use your actual GitHub username to get your avatar from your GitHub page
 
 
 ## Author
