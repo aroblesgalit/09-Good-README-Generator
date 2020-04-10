@@ -3,8 +3,37 @@ const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util");
 
+// Promisify fs.writeFile
 const writeFileAsync = util.promisify(fs.writeFile);
 
+// Prompt user
+promptUser()
+    .then(
+        // Use response
+        async function (response) {
+            try {
+                // and get each separate response
+                const { fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests } = response;
+                // Call the getGitHubData function to get the avatar url
+                const avatar = await getGitHubData(username);
+                // Generate the readme using all the response data
+                return generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar);
+            // If there's an error, log error
+            } catch (err) {
+                console.log(err);
+            }
+    })
+    .then(function (text) {
+        // Then use the result from the generateREADME function to write the README file
+        writeFileAsync("README_GENERATED.md", text, "utf8");
+        // Log to the console a success message
+        console.log("Success!!! README_GENERATED.md has been generated.");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
+
+// Create a function to prompt users for data
 function promptUser() {
     return inquirer.prompt([
         {
@@ -77,27 +106,7 @@ function promptUser() {
     ])
 }
 
-promptUser()
-    .then(
-        async function (response) {
-            try {
-                const { fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests } = response;
-                const avatar = await getGitHubData(username);
-
-                return generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar);
-
-            } catch (err) {
-                console.log(err);
-            }
-    })
-    .then(function (text) {
-        writeFileAsync("README2.md", text, "utf8");
-        console.log("README2 has been generated.");
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
-
+// Create function to call axios to get user's avatar url
 function getGitHubData(username) {
     const queryUrl = `https://api.github.com/search/users?q=${username}`;
 
@@ -109,6 +118,7 @@ function getGitHubData(username) {
         });
 }
 
+// Create function to generate the template literate using data from the prompt and GitHub call
 function generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar) {
     return `
 # ${title}   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
