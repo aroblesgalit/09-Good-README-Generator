@@ -21,31 +21,31 @@ This was a homework assignment where we built a weather dashboard that will run 
 
 
 ## Installation
-
+```
 1. Step 1
 2. Step 2
 3. Step 3
 4. Step 4
-
+```
 
 ## Usage
-
+```
 Provide instructions and examples for use. Include screenshots as needed.
-
+```
 
 ## Credits
-
+```
 List your collaborators, if any, with links to their GitHub profiles.
 
 If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
 
 If you followed tutorials, include links to those here as well.
-
+```
 
 ## License
-
+```
 The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
-
+```
 
 ## Contributing
 
@@ -55,13 +55,13 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 
 ## Tests
-
+```
 Go the extra mile and write tests for your application. Then provide examples on how to run them.
-
+```
 
 ## Author
 
-Name: Alvin Galit  
+Name: __Alvin Galit__  
 GitHub: github.com/aroblesgalit  
 ![Image of me](imageurl)
 

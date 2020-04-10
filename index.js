@@ -9,6 +9,11 @@ function promptUser() {
     return inquirer.prompt([
         {
             type: "input",
+            message: "Enter your full name:",
+            name: "fullName"
+        },
+        {
+            type: "input",
             message: "Enter your GitHub username:",
             name: "username"
         },
@@ -29,17 +34,22 @@ function promptUser() {
         },
         {
             type: "input",
-            message: "Provide a step-by-step description of how to install your project: (separate using a comma)",
+            message: "Include a url of a screenshot:",
+            name: "screenshotUrl"
+        },
+        {
+            type: "input",
+            message: "Provide a step-by-step description of how to install your project (separate using a comma):",
             name: "installation"
         },
         {
             type: "input",
-            message: "Provide instructions and examples for use:",
+            message: "Provide instructions and examples for use (separate using a comma):",
             name: "usage"
         },
         {
             type: "input",
-            message: "List your collaborators, third-party assets, etc. if any: (separate using a comma)",
+            message: "List your collaborators, third-party assets, etc. if any (separate using a comma):",
             name: "credits"
         },
         {
@@ -61,45 +71,62 @@ function promptUser() {
         },
         {
             type: "input",
-            message: "Write tests for your application: (separate using a comma)",
+            message: "Write tests for your application (separate using a comma):",
             name: "tests"
         }
     ])
 }
 
 promptUser()
-    .then(function (response) {
-        console.log(response);
+    .then(
+        async function (response) {
+            try {
+                const { fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests } = response;
+                const avatar = await getGitHubData(username);
+
+                return generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar);
+
+            } catch (err) {
+                console.log(err);
+            }
+    })
+    .then(function (text) {
+        writeFileAsync("README2.md", text, "utf8");
+        console.log("README2 has been generated.");
+    })
+    .catch(function (err) {
+        console.log(err);
     });
 
+function getGitHubData(username) {
+    const queryUrl = `https://api.github.com/search/users?q=${username}`;
 
-// function getGitHubData(username) {
-//     const queryUrl = `https://api.github.com/search/users?q=${username}`;
+    return axios
+        .get(queryUrl)
+        .then(function (response) {
+            const { avatar_url } = response.data.items[0];
+            return avatar_url;
+        });
+}
 
-//     return axios
-//         .get(queryUrl)
-//         .then(function (response) {
-//             const { avatar_url } = response.data.items[0];
-//         })
-// }
-
-function generateREADME() {
+function generateREADME(fullName, username, title, shortDescription, longDescription, screenshotUrl, installation, usage, credits, license, tests, avatar) {
     return `
-# Project Title   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-> Short Description  
+# ${title}   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+> ${shortDescription}  
 
 
 ## Description
 
-This was a homework assignment where we built a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. We were tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Specifically, we used [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities.
+${longDescription}
 
 
-![Screenshot](screenshotAddress)
+![Screenshot](${screenshotUrl})
 
 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Credits](#credits)
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
@@ -108,38 +135,43 @@ This was a homework assignment where we built a weather dashboard that will run 
 
 ## Installation
 
-1. Step 1
-2. Step 2
-3. Step 3
-4. Step 4
+    ${installation}
 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+    ${usage}
+
+
+## Credits
+
+    ${credits}
+
 
 ## License
 
-The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
+    ${license}
 
 
 ## Contributing
 
-If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+[Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them.
+    ${tests}
 
 
 ## Author
 
-Name: Alvin Galit  
-GitHub: github.com/aroblesgalit  
-![Image of me](imageurl)
+Name: __${fullName}__  
+GitHub: github.com/${username}  
+![Image of Me](${avatar})
 
 ---
-© 2020 Alvin Galit. All Rights Reserved.
-    `
+© 2020 ${fullName}. All Rights Reserved.
+`
 }

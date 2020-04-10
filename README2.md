@@ -1,19 +1,20 @@
 
-# Project Title   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-> Short Description  
+# Good README Generator   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+> Command-line application for dynamically generating a README.md  
 
 
 ## Description
 
-This was a homework assignment where we built a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. We were tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Specifically, we used [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities.
+This was a homework assignment where we created a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command: node index.js
 
 
-![Screenshot](screenshotAddress)
+![Screenshot](./readme-generator-screenshot.JPG)
 
 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Credits](#credits)
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
@@ -22,37 +23,41 @@ This was a homework assignment where we built a weather dashboard that will run 
 
 ## Installation
 
-1. Step 1
-2. Step 2
-3. Step 3
-4. Step 4
+    Step one, Step two, Step three
 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+    Example one, Example two, Example three
+
+
+## Credits
+
+    Credit one, Credit two, Credit three
+
 
 ## License
 
-The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
+    MIT License
 
 
 ## Contributing
 
-If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+[Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them.
+    Test one, Test two, Test three
 
 
 ## Author
 
-Name: Alvin Galit  
+Name: __Alvin Galit__  
 GitHub: github.com/aroblesgalit  
-![Image of me](imageurl)
+![Image of Me](https://avatars1.githubusercontent.com/u/38934010?v=4)
 
 ---
 © 2020 Alvin Galit. All Rights Reserved.
-    
