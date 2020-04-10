@@ -5,15 +5,73 @@ const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// function promptUser() {
-//     return inquirer.prompt([
-//         {
-//             type: "input",
-//             message: "Enter your GitHub username:",
-//             name: "username"
-//         }
-//     ])
-// }
+function promptUser() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "Enter your GitHub username:",
+            name: "username"
+        },
+        {
+            type: "input",
+            message: "Give your project a title:",
+            name: "title"
+        },
+        {
+            type: "input",
+            message: "Give your project a short description:",
+            name: "shortDescription"
+        },
+        {
+            type: "input",
+            message: "Give your project a long description:",
+            name: "longDescription"
+        },
+        {
+            type: "input",
+            message: "Provide a step-by-step description of how to install your project: (separate using a comma)",
+            name: "installation"
+        },
+        {
+            type: "input",
+            message: "Provide instructions and examples for use:",
+            name: "usage"
+        },
+        {
+            type: "input",
+            message: "List your collaborators, third-party assets, etc. if any: (separate using a comma)",
+            name: "credits"
+        },
+        {
+            type: "list",
+            message: "Choose a license for your project:",
+            name: "license",
+            choices: [
+                "MIT License",
+                "GNU AGPLv3",
+                "GNU GPLv3",
+                "GNU LGPLv3",
+                "GNU GPLv2",
+                "Mozilla Public License 2.0",
+                "Apache License 2.0",
+                "ISC License",
+                "Boost Software License 1.0",
+                "The Unlicense"
+            ]
+        },
+        {
+            type: "input",
+            message: "Write tests for your application: (separate using a comma)",
+            name: "tests"
+        }
+    ])
+}
+
+promptUser()
+    .then(function (response) {
+        console.log(response);
+    });
+
 
 // function getGitHubData(username) {
 //     const queryUrl = `https://api.github.com/search/users?q=${username}`;

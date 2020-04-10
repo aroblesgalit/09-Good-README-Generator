@@ -1,4 +1,4 @@
-# Project Title   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+# Project Title   ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 > Short Description  
 
 
@@ -13,6 +13,7 @@ This was a homework assignment where we built a weather dashboard that will run 
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Credits](#credits)
 * [License](#license)
 * [Contributing](#contributing)
 * [Tests](#tests)
@@ -31,6 +32,16 @@ This was a homework assignment where we built a weather dashboard that will run 
 
 Provide instructions and examples for use. Include screenshots as needed.
 
+
+## Credits
+
+List your collaborators, if any, with links to their GitHub profiles.
+
+If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+
+If you followed tutorials, include links to those here as well.
+
+
 ## License
 
 The last section of a good README is a license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, use [https://choosealicense.com/](https://choosealicense.com/)
@@ -38,7 +49,9 @@ The last section of a good README is a license. This lets other developers know 
 
 ## Contributing
 
-If you created an application or package and would like other developers to contribute it, you will want to add guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own.
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+[Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
 
 ## Tests
